@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistema acadêmico de reserva de salas de estudo e laboratórios.">
+  <title>Reservaê | Salas acadêmicas</title><link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/"> <span class="brand-mark">R</span><span>Reserva<span class="brand-accent">ê</span><small>ESPAÇOS ACADÊMICOS</small></span></a><span class="top-note">Gestão de ambientes e horários</span></header>
+<main class="container">
+  <section class="hero"><div><p class="eyebrow">PLANEJE. RESERVE. COLABORE.</p><h1>Seu próximo projeto<br><span>começa com um espaço.</span></h1><p>Consulte ambientes, organize encontros e reserve seu espaço acadêmico.</p></div><div class="hero-art"><div class="art-card"><span>↗</span><strong>Espaços<br>para ideias.</strong><small>ESTUDE • CRIE • COMPARTILHE</small></div></div></section>
+  <section class="stats"><article><span>Salas cadastradas</span><strong id="totalSalas">0</strong></article><article><span>Reservas ativas</span><strong id="totalReservas">0</strong></article><article><span>Próximas reservas</span><strong id="proximasReservas">0</strong></article></section>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <nav class="tabs"><button class="tab active" data-tab="reservas">Reservas</button><button class="tab" data-tab="salas">Salas</button></nav>
+  <section id="view-reservas" class="panel">
+    <div class="section-head"><div><p class="eyebrow">AGENDA ACADÊMICA</p><h2>Reservas</h2></div><button class="primary" id="novaReserva">+ Nova reserva</button></div>
+    <div class="filters"><label>Data<input type="date" id="filtroData"></label><label>Sala<select id="filtroSala"><option value="">Todas as salas</option></select></label><label>Status<select id="filtroStatus"><option value="">Todos</option><option>Ativa</option><option>Cancelada</option></select></label><button class="secondary" id="limparFiltros">Limpar filtros</button></div>
+    <div id="listaReservas" class="reservation-list"></div>
+  </section>
+  <section id="view-salas" class="panel hidden">
+    <div class="section-head"><div><p class="eyebrow">AMBIENTES DISPONÍVEIS</p><h2>Salas</h2></div><button class="primary" id="novaSala">+ Cadastrar sala</button></div>
+    <div id="listaSalas" class="room-grid"></div>
+  </section>
+</main>
+<dialog id="modalSala"><form id="formSala" class="modal-form"><div class="modal-head"><div><p class="eyebrow">AMBIENTE</p><h2 id="tituloSala">Cadastrar sala</h2></div><button type="button" class="close" data-close>×</button></div><input type="hidden" id="salaId"><label>Nome / identificação<input id="salaNome" required maxlength="80" placeholder="Ex.: Laboratório 02"></label><label>Localização<input id="salaLocal" required placeholder="Ex.: Bloco B, 1º andar"></label><div class="form-row"><label>Capacidade máxima<input id="salaCapacidade" type="number" min="1" step="1" required></label><label>Situação<select id="salaSituacao"><option>Disponível</option><option>Inativa</option></select></label></div><label>Recursos disponíveis <small>(separe por vírgula)</small><input id="salaRecursos" placeholder="Projetor, quadro, computadores"></label><div class="modal-actions"><button type="button" class="secondary" data-close>Cancelar</button><button class="primary">Salvar sala</button></div></form></dialog>
+<dialog id="modalReserva"><form id="formReserva" class="modal-form"><div class="modal-head"><div><p class="eyebrow">AGENDA</p><h2 id="tituloReserva">Nova reserva</h2></div><button type="button" class="close" data-close>×</button></div><input type="hidden" id="reservaId"><label>Nome do aluno responsável<input id="aluno" required maxlength="100"></label><label>E-mail institucional<input id="email" type="email" required></label><label>Sala<select id="resSala" required></select></label><div class="form-row"><label>Data<input id="resData" type="date" required></label><label>Participantes<input id="participantes" type="number" min="1" step="1" required></label></div><div id="feriadoAviso" class="notice hidden"></div><div class="form-row"><label>Horário inicial<input id="inicio" type="time" required></label><label>Horário final<input id="fim" type="time" required></label></div><label>Finalidade<textarea id="finalidade" required rows="2" placeholder="Ex.: Reunião de trabalho interdisciplinar"></textarea></label><label>Status<select id="resStatus"><option>Ativa</option><option>Cancelada</option></select></label><div class="modal-actions"><button type="button" class="secondary" data-close>Cancelar</button><button class="primary">Salvar reserva</button></div></form></dialog>
+<footer>RESERVAÊ <span>•</span> Sistema acadêmico de gestão de espaços</footer>
+</body></html>

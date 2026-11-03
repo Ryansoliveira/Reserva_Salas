@@ -1,0 +1,8 @@
+{
+  "name": "sistema-reserva-salas",
+  "version": "1.0.0",
+  "description": "Sistema acadêmico de reserva de salas com CRUD, API REST e consulta de feriados pela BrasilAPI.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "dev": "node --watch server.js" },
+  "engines": { "node": ">=18" }
+}
